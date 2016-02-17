@@ -1,0 +1,14 @@
+language: cpp
+os:
+ - linux
+ - osx
+env:
+  matrix:
+   - TRAVIS_NODE_VERSION="5"
+   - TRAVIS_NODE_VERSION="4"
+before_install:
+ - git clone https://github.com/creationix/nvm.git /tmp/.nvm
+ - source /tmp/.nvm/nvm.sh
+ - nvm install  $TRAVIS_NODE_VERSION
+ - nvm use --delete-prefix $TRAVIS_NODE_VERSION
+script: npm run test
